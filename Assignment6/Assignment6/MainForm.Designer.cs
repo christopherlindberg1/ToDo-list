@@ -57,7 +57,7 @@
             // lblPriority
             // 
             this.lblPriority.AutoSize = true;
-            this.lblPriority.Location = new System.Drawing.Point(631, 38);
+            this.lblPriority.Location = new System.Drawing.Point(655, 38);
             this.lblPriority.Name = "lblPriority";
             this.lblPriority.Size = new System.Drawing.Size(54, 18);
             this.lblPriority.TabIndex = 1;
@@ -105,6 +105,7 @@
             this.btnAdd.TabIndex = 6;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnChange
             // 
