@@ -21,7 +21,18 @@ namespace Assignment6
         private void InitializeGUI()
         {
             this.comboBoxPriority.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.comboBoxPriority.Items.AddRange(PriorityLevelsManager.ParsePriorityLevels());
+            this.comboBoxPriority.SelectedIndex = 0;
+            this.dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            this.dateTimePicker1.CustomFormat = "yyyy/MM/dd - hh:mm:ss";
+            this.listBoxToDos.HorizontalScrollbar = true;
             this.SetFormToDefaultState();
+
+
+            var levels = PriorityLevelsManager.ParsePriorityLevels();
+            MessageBox.Show(levels[2]);
+
+
         }
 
         private void SetFormToDefaultState()
