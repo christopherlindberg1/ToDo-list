@@ -69,12 +69,14 @@ namespace Assignment6
         {
             this.btnChange.Enabled = false;
             this.btnDelete.Enabled = false;
+            this.btnSaveChanges.Enabled = false;
         }
 
         private void SetFormToActiveState()
         {
             this.btnChange.Enabled = true;
             this.btnDelete.Enabled = true;
+            this.btnSaveChanges.Enabled = true;
         }
 
         private bool ValidateInput()
@@ -88,12 +90,9 @@ namespace Assignment6
 
         private bool ValidateDateTime()
         {
-            MessageBox.Show(this.dateTimePicker1.Value.Minute.ToString());
-
-
-            if (this.dateTimePicker1.Value <= DateTime.Now)
+            if (this.dateTimePicker1.Value <= DateTime.Now.AddMinutes(5))
             {
-                this.AddErrorMessage("The date and time cannot be in the past");
+                this.AddErrorMessage("The date and time must be set at least 5 minutes into the future");
                 return false;
             }
 
@@ -128,6 +127,34 @@ namespace Assignment6
 
             return true;
         }
+
+        /// <summary>
+        ///   Creates Task object from data input by user
+        /// </summary>
+        /// <returns>Task object</returns>
+        private Task CreateTaskObject(string description, PriorityLevels priority, DateTime dateTime)
+        {
+            return new Task(description, priority, dateTime);
+        }
+
+        private void AddTask(Task task)
+        {
+            this.TaskManager.AddTask(task);
+            this.AddTaskToGUI(task);
+            this.ClearInputFields();
+        }
+
+        private void AddTaskToGUI(Task task)
+        {
+            this.listBoxToDos.Items.Add(task.ToString());
+        }
+
+        private void ClearInputFields()
+        {
+            this.textBoxToDo.Text = "";
+            this.comboBoxPriority.SelectedIndex = 0;
+        }
+
 
 
 
@@ -172,14 +199,29 @@ namespace Assignment6
         {
             if (this.ValidateInput())
             {
+                string description = this.textBoxToDo.Text.Trim();
 
+                PriorityLevels priority;
+                Enum.TryParse(this.comboBoxPriority.SelectedItem.ToString().Replace(" ", "_"),
+                    out priority);
 
+                DateTime dateTime = this.dateTimePicker1.Value;
+
+                Task task = new Task(description, priority, dateTime);
+                this.AddTask(task);
             }
             else
             {
                 this.ShowErrorMessages();
-
             }
+        }
+
+        private void listBoxToDos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.listBoxToDos.SelectedIndex != -1)
+                this.SetFormToActiveState();
+            else
+                this.SetFormToDefaultState();
         }
     }
 }

@@ -36,7 +36,34 @@ namespace Assignment6
 
 
 
-        // =================== Methods =================== //
+        // ===================== Methods ===================== //
+
+        public Task(string description, PriorityLevels priority, DateTime dateTime)
+        {
+            if (!this.ValidateTaskData(description, priority, dateTime))
+                throw new InvalidOperationException("Something went wrong in ValidateTaskData");
+            
+            this.Description = description;
+            this.PriorityLevel = priority;
+            this.DateTime = dateTime;
+        }
+
+        /// <summary>
+        ///   Validates arguments that will later be sent to the Task constructor
+        /// </summary>
+        /// <returns>True if there is no exception</returns>
+        private bool ValidateTaskData(string description, PriorityLevels priority, DateTime dateTime)
+        {
+            if (String.IsNullOrWhiteSpace(description))
+                throw new ArgumentNullException("description", "description cannot be empty");
+            if (!Enum.IsDefined(typeof(PriorityLevels), priority))
+                throw new ArgumentException("priority must be one of those specified in the enum",
+                    "priority");
+            if (dateTime <= DateTime.Now)
+                throw new ArgumentException("Date and time must cannot be set to the past");
+
+            return true;
+        }
 
 
         private string GetTaskDateStr()
@@ -54,12 +81,12 @@ namespace Assignment6
 
         private string GetPriorityLevelStr()
         {
-            return this.PriorityLevel.ToString();
+            return this.PriorityLevel.ToString().Replace("_", " ");
         }
 
         public override string ToString()
         {
-            return String.Format("{0, -10} {1, -20} {2, -10} {3}",
+            return String.Format("    {0, -26} {1, -20} {2, -41} {3}",
                 this.GetTaskDateStr(), this.GetTaskTimeStr(),
                 this.GetPriorityLevelStr(), this.Description);
         }

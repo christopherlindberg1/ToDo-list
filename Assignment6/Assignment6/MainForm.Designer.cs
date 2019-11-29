@@ -43,6 +43,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.btnSaveChanges = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblDateAndTime
@@ -75,7 +76,7 @@
             // lblCurrentTime
             // 
             this.lblCurrentTime.AutoSize = true;
-            this.lblCurrentTime.Location = new System.Drawing.Point(780, 477);
+            this.lblCurrentTime.Location = new System.Drawing.Point(787, 560);
             this.lblCurrentTime.Name = "lblCurrentTime";
             this.lblCurrentTime.Size = new System.Drawing.Size(64, 18);
             this.lblCurrentTime.TabIndex = 3;
@@ -133,6 +134,7 @@
             this.listBoxToDos.Name = "listBoxToDos";
             this.listBoxToDos.Size = new System.Drawing.Size(815, 256);
             this.listBoxToDos.TabIndex = 9;
+            this.listBoxToDos.SelectedIndexChanged += new System.EventHandler(this.listBoxToDos_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -146,7 +148,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(258, 170);
+            this.label2.Location = new System.Drawing.Point(161, 170);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 18);
             this.label2.TabIndex = 11;
@@ -155,7 +157,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(441, 170);
+            this.label3.Location = new System.Drawing.Point(257, 170);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(54, 18);
             this.label3.TabIndex = 12;
@@ -164,7 +166,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(631, 170);
+            this.label4.Location = new System.Drawing.Point(405, 170);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(83, 18);
             this.label4.TabIndex = 13;
@@ -177,11 +179,21 @@
             this.dateTimePicker1.Size = new System.Drawing.Size(276, 24);
             this.dateTimePicker1.TabIndex = 14;
             // 
+            // btnSaveChanges
+            // 
+            this.btnSaveChanges.Location = new System.Drawing.Point(731, 477);
+            this.btnSaveChanges.Name = "btnSaveChanges";
+            this.btnSaveChanges.Size = new System.Drawing.Size(120, 30);
+            this.btnSaveChanges.TabIndex = 15;
+            this.btnSaveChanges.Text = "Save changes";
+            this.btnSaveChanges.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(900, 506);
+            this.ClientSize = new System.Drawing.Size(900, 606);
+            this.Controls.Add(this.btnSaveChanges);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -222,6 +234,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Button btnSaveChanges;
     }
 }
 

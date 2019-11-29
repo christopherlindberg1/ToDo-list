@@ -9,7 +9,7 @@ namespace Assignment6
     public class TaskManager
     {
 
-        private readonly List<Task> _tasks;
+        private readonly List<Task> _tasks = new List<Task>();
 
 
         // ===================== Properties ===================== //
