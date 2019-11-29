@@ -88,6 +88,9 @@ namespace Assignment6
 
         private bool ValidateDateTime()
         {
+            MessageBox.Show(this.dateTimePicker1.Value.Minute.ToString());
+
+
             if (this.dateTimePicker1.Value <= DateTime.Now)
             {
                 this.AddErrorMessage("The date and time cannot be in the past");
@@ -116,7 +119,8 @@ namespace Assignment6
                 return false;
             }
 
-            if (!Enum.IsDefined(typeof(PriorityLevels), this.comboBoxPriority.SelectedItem))
+            if (!Enum.IsDefined(typeof(PriorityLevels),
+                this.comboBoxPriority.SelectedItem.ToString().Replace(" ", "_")))
             {
                 this.AddErrorMessage("You must select a priority in the list");
                 return false;
@@ -133,7 +137,7 @@ namespace Assignment6
         private void AddErrorMessage(string error)
         {
             if (String.IsNullOrWhiteSpace(error))
-                throw new ArgumentNullException("error", "error cannot be empty");
+                throw new ArgumentNullException("error", "error list cannot be empty");
 
             this.Errors.Add(error);
         }
