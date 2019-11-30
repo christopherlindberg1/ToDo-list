@@ -67,16 +67,34 @@ namespace Assignment6
 
         private void SetFormToDefaultState()
         {
+            this.ResetInputFields();
+
+            this.btnAdd.Enabled = true;
             this.btnChange.Enabled = false;
             this.btnDelete.Enabled = false;
             this.btnSaveChanges.Enabled = false;
+            this.btnCancelChanges.Enabled = false;
+
+            this.listBoxToDos.SelectedIndex = -1;
         }
 
         private void SetFormToActiveState()
         {
+            this.btnAdd.Enabled = true;
             this.btnChange.Enabled = true;
             this.btnDelete.Enabled = true;
+            this.btnSaveChanges.Enabled = false;
+            this.btnCancelChanges.Enabled = false;
+        }
+
+        private void SetFormToEditState()
+        {
+            this.btnAdd.Enabled = false;
+            this.btnChange.Enabled = false;
+            this.btnDelete.Enabled = false;
             this.btnSaveChanges.Enabled = true;
+            this.btnCancelChanges.Enabled = true;
+
         }
 
         private bool ValidateInput()
@@ -128,20 +146,41 @@ namespace Assignment6
             return true;
         }
 
-        /// <summary>
-        ///   Creates Task object from data input by user
-        /// </summary>
-        /// <returns>Task object</returns>
-        private Task CreateTaskObject(string description, PriorityLevels priority, DateTime dateTime)
+        private Task CreateTaskObject()
         {
+            if (this.comboBoxPriority.SelectedIndex == -1)
+                throw new InvalidOperationException("No priprity was chosen");
+
+            string description = this.textBoxToDo.Text.Trim();
+
+            PriorityLevels priority;
+            Enum.TryParse(this.comboBoxPriority.SelectedItem.ToString().Replace(" ", "_"),
+                out priority);
+
+            DateTime dateTime = this.dateTimePicker1.Value;
+
             return new Task(description, priority, dateTime);
+        }
+
+        private void ResetInputFields()
+        {
+            this.textBoxToDo.Text = "";
+            this.comboBoxPriority.SelectedIndex = 0;
+            this.dateTimePicker1.Value = DateTime.Now;
+        }
+
+        private void FillFieldsWithTaskData(Task task)
+        {
+            this.textBoxToDo.Text = task.Description;
+            this.dateTimePicker1.Value = task.DateTime;
+            this.comboBoxPriority.SelectedIndex = (int) task.PriorityLevel;
         }
 
         private void AddTask(Task task)
         {
             this.TaskManager.AddTask(task);
             this.AddTaskToGUI(task);
-            this.ClearInputFields();
+            this.SetFormToDefaultState();
         }
 
         private void AddTaskToGUI(Task task)
@@ -149,11 +188,58 @@ namespace Assignment6
             this.listBoxToDos.Items.Add(task.ToString());
         }
 
-        private void ClearInputFields()
+        private void UpdateTask(Task task)
         {
-            this.textBoxToDo.Text = "";
-            this.comboBoxPriority.SelectedIndex = 0;
+            int selectedIndex = this.listBoxToDos.SelectedIndex;
+
+            if (selectedIndex == -1)
+            {
+                MessageBox.Show("No task is chosen to be updated", "Info");
+                return;
+            }
+
+            Task newTask = this.CreateTaskObject();
+
+            this.TaskManager.UpdateTask(selectedIndex, newTask);
+            this.UpdateTaskInGUI(selectedIndex, newTask);
+            this.SetFormToDefaultState();
         }
+
+        private void UpdateTaskInGUI(int index, Task task)
+        {
+            if (index == -1)
+            {
+                MessageBox.Show("No task is chosen to be updated", "Info");
+                return;
+            }
+
+            this.listBoxToDos.Items[index] = task.ToString();
+        }
+
+        private void DeleteTask(int index)
+        {
+            if (index == -1)
+            {
+                MessageBox.Show("No task was chosen", "Info");
+                return;
+            }
+
+            this.TaskManager.DeleteTask(index);
+            this.DeleteTaskFromGUI(index);
+        }
+
+        private void DeleteTaskFromGUI(int index) 
+        {
+            if (index == -1)
+            {
+                MessageBox.Show("No task was chosen", "Info");
+                return;
+            }
+
+            this.listBoxToDos.Items.RemoveAt(index);
+        }
+
+        
 
 
 
@@ -199,15 +285,7 @@ namespace Assignment6
         {
             if (this.ValidateInput())
             {
-                string description = this.textBoxToDo.Text.Trim();
-
-                PriorityLevels priority;
-                Enum.TryParse(this.comboBoxPriority.SelectedItem.ToString().Replace(" ", "_"),
-                    out priority);
-
-                DateTime dateTime = this.dateTimePicker1.Value;
-
-                Task task = new Task(description, priority, dateTime);
+                Task task = this.CreateTaskObject();
                 this.AddTask(task);
             }
             else
@@ -223,5 +301,53 @@ namespace Assignment6
             else
                 this.SetFormToDefaultState();
         }
+
+        private void btnChange_Click(object sender, EventArgs e)
+        {
+            int selectedIndex = this.listBoxToDos.SelectedIndex;
+            if (selectedIndex != -1)
+            {
+                this.FillFieldsWithTaskData(this.TaskManager.GetTask(selectedIndex));
+                this.SetFormToEditState();
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            int selectedIndex = this.listBoxToDos.SelectedIndex;
+
+            if (selectedIndex != -1)
+            {
+                var cancel = MessageBox.Show("Are you sure you want to delete this task?",
+                                             "Confirm",
+                                             MessageBoxButtons.YesNo);
+
+                if (cancel == DialogResult.Yes)
+                {
+                    this.DeleteTask(selectedIndex);
+                }
+            }
+        }
+
+        private void btnCancelChanges_Click(object sender, EventArgs e)
+        {
+            this.listBoxToDos.SelectedIndex = -1;
+            this.SetFormToDefaultState();
+        }
+
+        private void btnSaveChanges_Click(object sender, EventArgs e)
+        {
+            if (this.ValidateInput())
+            {
+                Task task = this.CreateTaskObject();
+                this.UpdateTask(task);
+            }
+            else
+            {
+                this.ShowErrorMessages();
+            }
+        }
+
+        
     }
 }

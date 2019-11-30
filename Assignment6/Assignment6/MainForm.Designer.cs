@@ -44,6 +44,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.btnSaveChanges = new System.Windows.Forms.Button();
+            this.btnCancelChanges = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblDateAndTime
@@ -116,6 +117,7 @@
             this.btnChange.TabIndex = 7;
             this.btnChange.Text = "Change";
             this.btnChange.UseVisualStyleBackColor = true;
+            this.btnChange.Click += new System.EventHandler(this.btnChange_Click);
             // 
             // btnDelete
             // 
@@ -125,6 +127,7 @@
             this.btnDelete.TabIndex = 8;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // listBoxToDos
             // 
@@ -187,12 +190,24 @@
             this.btnSaveChanges.TabIndex = 15;
             this.btnSaveChanges.Text = "Save changes";
             this.btnSaveChanges.UseVisualStyleBackColor = true;
+            this.btnSaveChanges.Click += new System.EventHandler(this.btnSaveChanges_Click);
+            // 
+            // btnCancelChanges
+            // 
+            this.btnCancelChanges.Location = new System.Drawing.Point(572, 477);
+            this.btnCancelChanges.Name = "btnCancelChanges";
+            this.btnCancelChanges.Size = new System.Drawing.Size(120, 30);
+            this.btnCancelChanges.TabIndex = 16;
+            this.btnCancelChanges.Text = "Cancel";
+            this.btnCancelChanges.UseVisualStyleBackColor = true;
+            this.btnCancelChanges.Click += new System.EventHandler(this.btnCancelChanges_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(900, 606);
+            this.Controls.Add(this.btnCancelChanges);
             this.Controls.Add(this.btnSaveChanges);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label4);
@@ -235,6 +250,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Button btnSaveChanges;
+        private System.Windows.Forms.Button btnCancelChanges;
     }
 }
 

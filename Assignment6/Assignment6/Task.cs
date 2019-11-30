@@ -28,7 +28,7 @@ namespace Assignment6
             set { this._priorityLevel = value; }
         }
 
-        private DateTime DateTime
+        public DateTime DateTime
         {
             get { return this._dateTime; }
             set { this._dateTime = value; }
