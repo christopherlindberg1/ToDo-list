@@ -61,6 +61,37 @@ namespace Assignment6
             return true;
         }
 
+        public List<Task> GetSortedTaskList(SortingOptions sortingOption)
+        {
+            // Get tasks-list
+            // Sort by sortingOption
+            // Return list
+            if (!Enum.IsDefined(typeof(SortingOptions), sortingOption))
+                throw new ArgumentException("sortingOption must be a SortingOptions", "sortingOption");
+
+            if (sortingOption == SortingOptions.dateTime)
+                return this.SortTasksByDateTime();
+            else if (sortingOption == SortingOptions.description)
+                return this.SortTasksByDescription();
+            else if (sortingOption == SortingOptions.priority)
+                return this.SortTasksByPriority();
+        }
+
+        private List<Task> SortTasksByDateTime()
+        {
+            return this.Tasks;
+        }
+
+        private List<Task> SortTasksByDescription()
+        {
+            return this.Tasks;
+        }
+
+        private List<Task> SortTasksByPriority()
+        {
+            return this.Tasks;
+        }
+
 
 
     }

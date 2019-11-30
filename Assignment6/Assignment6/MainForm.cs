@@ -45,6 +45,9 @@ namespace Assignment6
             this.comboBoxPriority.DropDownStyle = ComboBoxStyle.DropDownList;
             this.comboBoxPriority.Items.AddRange(PriorityLevelsManager.ParsePriorityLevels());
             this.comboBoxPriority.SelectedIndex = 0;
+            this.comboBoxSorting.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.comboBoxSorting.Items.AddRange(Enum.GetNames(typeof(SortingOptions)));
+            this.comboBoxSorting.SelectedIndex = 0;
             this.dateTimePicker1.Format = DateTimePickerFormat.Custom;
             this.dateTimePicker1.CustomFormat = " yyyy/MM/dd - hh:mm:ss";
             this.listBoxToDos.HorizontalScrollbar = true;
@@ -239,6 +242,22 @@ namespace Assignment6
             this.listBoxToDos.Items.RemoveAt(index);
         }
 
+        private List<Task> GetSortedTaskList(SortingOptions sortingOption)
+        {
+            if (!Enum.IsDefined(typeof(SortingOptions), sortingOption))
+                throw new ArgumentException("sortingOption must be a SortingOptions", "sortingOption");
+            
+            return this.TaskManager.GetSortedTaskList(sortingOption);
+        }
+
+        private void UpdateListWithTasks(List<Task> tasks)
+        {
+            this.listBoxToDos.Items.Clear();
+
+            foreach (Task task in tasks)
+                this.listBoxToDos.Items.Add(task.ToString());
+        }
+
         
 
 
@@ -266,7 +285,7 @@ namespace Assignment6
                 errorMessage.Append("\n");
             }
 
-            MessageBox.Show(errorMessage.ToString());
+            MessageBox.Show(errorMessage.ToString(), "Info");
 
             this.ClearErrorList();
         }
@@ -348,6 +367,21 @@ namespace Assignment6
             }
         }
 
-        
+        /// <summary>
+        ///   Event for sorting tasks
+        /// </summary>
+        private void comboBoxSorting_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.listBoxToDos.Items.Count > 1)
+            {
+                if (this.comboBoxSorting.SelectedIndex != -1)
+                {
+                    List<Task> tasks = this.GetSortedTaskList(
+                        (SortingOptions) this.comboBoxSorting.SelectedItem);
+
+                    this.UpdateListWithTasks(tasks);
+                }
+            }
+        }
     }
 }

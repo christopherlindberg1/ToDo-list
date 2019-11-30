@@ -45,6 +45,8 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.btnSaveChanges = new System.Windows.Forms.Button();
             this.btnCancelChanges = new System.Windows.Forms.Button();
+            this.comboBoxSorting = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblDateAndTime
@@ -101,7 +103,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(179, 119);
+            this.btnAdd.Location = new System.Drawing.Point(107, 121);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(120, 30);
             this.btnAdd.TabIndex = 6;
@@ -111,7 +113,7 @@
             // 
             // btnChange
             // 
-            this.btnChange.Location = new System.Drawing.Point(368, 119);
+            this.btnChange.Location = new System.Drawing.Point(260, 120);
             this.btnChange.Name = "btnChange";
             this.btnChange.Size = new System.Drawing.Size(120, 30);
             this.btnChange.TabIndex = 7;
@@ -121,7 +123,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(572, 119);
+            this.btnDelete.Location = new System.Drawing.Point(408, 120);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(120, 30);
             this.btnDelete.TabIndex = 8;
@@ -202,11 +204,31 @@
             this.btnCancelChanges.UseVisualStyleBackColor = true;
             this.btnCancelChanges.Click += new System.EventHandler(this.btnCancelChanges_Click);
             // 
+            // comboBoxSorting
+            // 
+            this.comboBoxSorting.FormattingEnabled = true;
+            this.comboBoxSorting.Location = new System.Drawing.Point(731, 125);
+            this.comboBoxSorting.Name = "comboBoxSorting";
+            this.comboBoxSorting.Size = new System.Drawing.Size(121, 26);
+            this.comboBoxSorting.TabIndex = 17;
+            this.comboBoxSorting.SelectedIndexChanged += new System.EventHandler(this.comboBoxSorting_SelectedIndexChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(630, 128);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(95, 18);
+            this.label5.TabIndex = 18;
+            this.label5.Text = "Sort tasks by";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(900, 606);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.comboBoxSorting);
             this.Controls.Add(this.btnCancelChanges);
             this.Controls.Add(this.btnSaveChanges);
             this.Controls.Add(this.dateTimePicker1);
@@ -251,6 +273,8 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Button btnSaveChanges;
         private System.Windows.Forms.Button btnCancelChanges;
+        private System.Windows.Forms.ComboBox comboBoxSorting;
+        private System.Windows.Forms.Label label5;
     }
 }
 
