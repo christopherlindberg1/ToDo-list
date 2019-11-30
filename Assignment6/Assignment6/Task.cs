@@ -73,10 +73,9 @@ namespace Assignment6
 
         private string GetTaskTimeStr()
         {
-            return String.Format("{0}:{1}:{2}",
+            return String.Format("{0}:{1}",
                 this.DateTime.Hour,
-                this.DateTime.Minute,
-                this.DateTime.Second);
+                this.DateTime.Minute);
         }
 
         private string GetPriorityLevelStr()

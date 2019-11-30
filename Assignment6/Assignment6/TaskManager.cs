@@ -75,6 +75,8 @@ namespace Assignment6
                 return this.SortTasksByDescription();
             else if (sortingOption == SortingOptions.priority)
                 return this.SortTasksByPriority();
+            else
+                return this.Tasks;
         }
 
         private List<Task> SortTasksByDateTime()

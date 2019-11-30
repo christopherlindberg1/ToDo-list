@@ -38,19 +38,24 @@ namespace Assignment6
         {
             InitializeComponent();
             this.InitializeGUI();
+            this.InitializeTimer();
         }
 
         private void InitializeGUI()
         {
+            this.comboBoxPriority.Items.Clear();
             this.comboBoxPriority.DropDownStyle = ComboBoxStyle.DropDownList;
             this.comboBoxPriority.Items.AddRange(PriorityLevelsManager.ParsePriorityLevels());
             this.comboBoxPriority.SelectedIndex = 0;
+            this.comboBoxSorting.Items.Clear();
             this.comboBoxSorting.DropDownStyle = ComboBoxStyle.DropDownList;
             this.comboBoxSorting.Items.AddRange(Enum.GetNames(typeof(SortingOptions)));
             this.comboBoxSorting.SelectedIndex = 0;
             this.dateTimePicker1.Format = DateTimePickerFormat.Custom;
-            this.dateTimePicker1.CustomFormat = " yyyy/MM/dd - hh:mm:ss";
+            this.dateTimePicker1.CustomFormat = " yyyy/MM/dd - HH:mm";
             this.listBoxToDos.HorizontalScrollbar = true;
+            this.lblCurrentTime.Text = DateTime.Now.ToLongTimeString();
+
             this.SetToolTips();
 
             this.SetFormToDefaultState();
@@ -98,6 +103,17 @@ namespace Assignment6
             this.btnSaveChanges.Enabled = true;
             this.btnCancelChanges.Enabled = true;
 
+        }
+
+        /// <summary>
+        ///   Initializes a timer and connects it to an event handler
+        /// </summary>
+        private void InitializeTimer()
+        {
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new EventHandler(timer1_Tick);
+
+            this.timer1.Enabled = true;
         }
 
         private bool ValidateInput()
@@ -258,6 +274,8 @@ namespace Assignment6
                 this.listBoxToDos.Items.Add(task.ToString());
         }
 
+
+
         
 
 
@@ -382,6 +400,12 @@ namespace Assignment6
                     this.UpdateListWithTasks(tasks);
                 }
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            // Updates current time label
+            this.lblCurrentTime.Text = DateTime.Now.ToLongTimeString();
         }
     }
 }

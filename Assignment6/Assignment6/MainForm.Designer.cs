@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblDateAndTime = new System.Windows.Forms.Label();
             this.lblPriority = new System.Windows.Forms.Label();
             this.lblToDo = new System.Windows.Forms.Label();
@@ -47,6 +48,7 @@
             this.btnCancelChanges = new System.Windows.Forms.Button();
             this.comboBoxSorting = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // lblDateAndTime
@@ -222,6 +224,10 @@
             this.label5.TabIndex = 18;
             this.label5.Text = "Sort tasks by";
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -275,6 +281,7 @@
         private System.Windows.Forms.Button btnCancelChanges;
         private System.Windows.Forms.ComboBox comboBoxSorting;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
