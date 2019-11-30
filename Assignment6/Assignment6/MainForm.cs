@@ -38,6 +38,7 @@ namespace Assignment6
         {
             InitializeComponent();
             this.InitializeGUI();
+            this.InitializeMenu();
             this.InitializeTimer();
         }
 
@@ -103,6 +104,11 @@ namespace Assignment6
             this.btnSaveChanges.Enabled = true;
             this.btnCancelChanges.Enabled = true;
 
+        }
+
+        private void InitializeMenu()
+        {
+            
         }
 
         /// <summary>
