@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Assignment6
 {
+    /// <summary>
+    ///   Enumeration for the available sorting options in the application
+    /// </summary>
     public enum SortingOptions
     {
         description_ascending,

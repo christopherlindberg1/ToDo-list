@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace Assignment6
 {
+    /// <summary>
+    ///   Class responsible for everything related to 
+    ///   managing a Task object.
+    /// </summary>
     public class Task
     {
         
@@ -65,12 +69,19 @@ namespace Assignment6
             return true;
         }
 
-
+        /// <summary>
+        ///   returns string representation of the date for the task
+        /// </summary>
+        /// <returns>string with date/returns>
         private string GetTaskDateStr()
         {
             return this.DateTime.Date.ToShortDateString();
         }
 
+        /// <summary>
+        ///   returns string representation of the time for the task
+        /// </summary>
+        /// <returns>string with time/returns>
         private string GetTaskTimeStr()
         {
             return String.Format("{0}:{1}",
@@ -78,11 +89,19 @@ namespace Assignment6
                 this.DateTime.Minute);
         }
 
+        /// <summary>
+        ///   Returns string representation of priority level for the task
+        /// </summary>
+        /// <returns>string with priority level</returns>
         private string GetPriorityLevelStr()
         {
             return this.PriorityLevel.ToString().Replace("_", " ");
         }
 
+        /// <summary>
+        ///   Returns string representing the Task.
+        /// </summary>
+        /// <returns>String representation of task.</returns>
         public override string ToString()
         {
             return String.Format("    {0, -26} {1, -20} {2, -41} {3}",

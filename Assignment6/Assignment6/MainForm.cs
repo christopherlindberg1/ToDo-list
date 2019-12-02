@@ -63,11 +63,17 @@ namespace Assignment6
             this.SetFormToDefaultState();
         }
 
+        /// <summary>
+        ///   Connects tooltips to controls in GUI
+        /// </summary>
         private void SetToolTips()
         {
             this.SetDateTimePickerToolTip();
         }
 
+        /// <summary>
+        ///   Sets a tooltip for the datetime picker
+        /// </summary>
         private void SetDateTimePickerToolTip()
         {
             ToolTip toolTipDateTimePicker = new ToolTip();
@@ -75,6 +81,9 @@ namespace Assignment6
                 " Write time here");
         }
 
+        /// <summary>
+        ///   Sets the controls to the default state
+        /// </summary>
         private void SetFormToDefaultState()
         {
             this.ResetInputFields();
@@ -88,6 +97,9 @@ namespace Assignment6
             this.listBoxToDos.SelectedIndex = -1;
         }
 
+        /// <summary>
+        ///   Sets controls to active state (when tasks are selected).
+        /// </summary>
         private void SetFormToActiveState()
         {
             this.btnAdd.Enabled = true;
@@ -97,6 +109,9 @@ namespace Assignment6
             this.btnCancelChanges.Enabled = false;
         }
 
+        /// <summary>
+        ///   Sets controls to edit state (when user is editing a task
+        /// </summary>
         private void SetFormToEditState()
         {
             this.btnAdd.Enabled = false;
@@ -107,6 +122,9 @@ namespace Assignment6
 
         }
 
+        /// <summary>
+        ///   Initializes the resource menu at the top of the GUI.
+        /// </summary>
         private void InitializeMenu()
         {
             
@@ -123,11 +141,18 @@ namespace Assignment6
             this.timer1.Enabled = true;
         }
 
+        /// <summary>
+        ///   Shows error messages in a dialog box.
+        /// </summary>
         private void ShowErrorMessage(string errorMessage)
         {
             MessageBox.Show(errorMessage, "Info");
         }
 
+        /// <summary>
+        ///   Validates all input required for a task
+        /// </summary>
+        /// <returns>boolean indicating if input was ok or not</returns>
         private bool ValidateInput()
         {
             bool dateTimeOk = this.ValidateDateTime();
@@ -137,6 +162,10 @@ namespace Assignment6
             return dateTimeOk && toDoOk && priorityOk;
         }
 
+        /// <summary>
+        ///   validates datetime agains set criterias
+        /// </summary>
+        /// <returns>boolean indicating if datetime was ok or not</returns>
         private bool ValidateDateTime()
         {
             if (this.dateTimePicker1.Value <= DateTime.Now.AddMinutes(5))
@@ -148,6 +177,10 @@ namespace Assignment6
             return true;
         }
 
+        /// <summary>
+        ///   validates description / title agains set criterias
+        /// </summary>
+        /// <returns>boolean indicating if description was ok or not</returns>
         private bool ValidateToDoText()
         {
             if (String.IsNullOrWhiteSpace(this.textBoxToDo.Text.Trim()))
@@ -159,6 +192,10 @@ namespace Assignment6
             return true;
         }
 
+        /// <summary>
+        ///   validates priority agains set criterias
+        /// </summary>
+        /// <returns>boolean indicating if priority was ok or not</returns>
         private bool ValidatePriority()
         {
             if (this.comboBoxPriority.SelectedIndex == -1)
@@ -177,6 +214,10 @@ namespace Assignment6
             return true;
         }
 
+        /// <summary>
+        ///   Creates a task object with data submitted by user
+        /// </summary>
+        /// <returns>Task object</returns>
         private Task CreateTaskObject()
         {
             if (this.comboBoxPriority.SelectedIndex == -1)
@@ -200,6 +241,9 @@ namespace Assignment6
             this.dateTimePicker1.Value = DateTime.Now;
         }
 
+        /// <summary>
+        ///   Fills input fields with data from a Task object
+        /// </summary>
         private void FillFieldsWithTaskData(Task task)
         {
             this.textBoxToDo.Text = task.Description;
@@ -207,6 +251,9 @@ namespace Assignment6
             this.comboBoxPriority.SelectedIndex = (int) task.PriorityLevel;
         }
 
+        /// <summary>
+        ///   Adds task to storage and GUI
+        /// </summary>
         private void AddTask(Task task)
         {
             this.TaskManager.AddTask(task);
@@ -214,11 +261,18 @@ namespace Assignment6
             this.SetFormToDefaultState();
         }
 
+        /// <summary>
+        ///   Adds task to GUI
+        /// </summary>
         private void AddTaskToGUI(Task task)
         {
             this.listBoxToDos.Items.Add(task.ToString());
         }
 
+        /// <summary>
+        ///   Updates a task by replacing it with a new Task object.
+        /// </summary>
+        /// <param name="task"></param>
         private void UpdateTask(Task task)
         {
             int selectedIndex = this.listBoxToDos.SelectedIndex;
@@ -236,6 +290,10 @@ namespace Assignment6
             this.SetFormToDefaultState();
         }
 
+        /// <summary>
+        ///   Updates a task in the GUI by overwriting task at a certain index
+        ///   with data from the Task object passed in
+        /// </summary>
         private void UpdateTaskInGUI(int index, Task task)
         {
             if (index == -1)
@@ -247,6 +305,9 @@ namespace Assignment6
             this.listBoxToDos.Items[index] = task.ToString();
         }
 
+        /// <summary>
+        ///   Deletes a task from storage and GUI.
+        /// </summary>
         private void DeleteTask(int index)
         {
             if (index == -1)
@@ -259,6 +320,10 @@ namespace Assignment6
             this.DeleteTaskFromGUI(index);
         }
 
+        /// <summary>
+        ///   Deletes task from GUI
+        /// </summary>
+        /// <param name="index"></param>
         private void DeleteTaskFromGUI(int index) 
         {
             if (index == -1)
@@ -270,6 +335,10 @@ namespace Assignment6
             this.listBoxToDos.Items.RemoveAt(index);
         }
 
+        /// <summary>
+        ///   Sorts task and updates GUI accordingly
+        /// </summary>
+        /// <param name="sortingOption"></param>
         private void SortTasks(SortingOptions sortingOption)
         {
             if (!Enum.IsDefined(typeof(SortingOptions), sortingOption))
@@ -279,6 +348,10 @@ namespace Assignment6
             this.UpdateListWithTasks(this.TaskManager.GetTasks());
         }
 
+        /// <summary>
+        ///   Filters (pattern matching) tasks and hides those
+        ///   tasks that do not match agains the search query
+        /// </summary>
         private void FilterTasks(string query)
         {
             this.listBoxToDos.Items.Clear();
@@ -291,6 +364,10 @@ namespace Assignment6
             }
         }
 
+        /// <summary>
+        ///   Updates the entire listbox with tasks from a 
+        ///   list with tasks.
+        /// </summary>
         private void UpdateListWithTasks(List<Task> tasks)
         {
             this.listBoxToDos.Items.Clear();
@@ -305,6 +382,10 @@ namespace Assignment6
 
 
         // ======================= Events ======================= //
+        
+        /// <summary>
+        ///   Event for adding a task.
+        /// </summary>
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (this.ValidateInput())
@@ -319,6 +400,10 @@ namespace Assignment6
             }
         }
 
+        /// <summary>
+        ///   Event triggered when user clicks on a task.
+        ///   Sets form to active state.
+        /// </summary>
         private void listBoxToDos_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.listBoxToDos.SelectedIndex != -1)
@@ -327,6 +412,9 @@ namespace Assignment6
                 this.SetFormToDefaultState();
         }
 
+        /// <summary>
+        ///   Fills input fields with data from the selected task.
+        /// </summary>
         private void btnChange_Click(object sender, EventArgs e)
         {
             int selectedIndex = this.listBoxToDos.SelectedIndex;
@@ -337,6 +425,9 @@ namespace Assignment6
             }
         }
 
+        /// <summary>
+        ///   Deletes a task. Asks user to confirm.
+        /// </summary>
         private void btnDelete_Click(object sender, EventArgs e)
         {
             int selectedIndex = this.listBoxToDos.SelectedIndex;
@@ -354,12 +445,19 @@ namespace Assignment6
             }
         }
 
+        /// <summary>
+        ///   Cancels any eventual changes made to a task.
+        /// </summary>
         private void btnCancelChanges_Click(object sender, EventArgs e)
         {
             this.listBoxToDos.SelectedIndex = -1;
             this.SetFormToDefaultState();
         }
 
+        /// <summary>
+        ///   Saves any changes made to a task. Validates 
+        ///   input just as if the user was adding a new task.
+        /// </summary>
         private void btnSaveChanges_Click(object sender, EventArgs e)
         {
             if (this.ValidateInput())
@@ -396,12 +494,6 @@ namespace Assignment6
             }
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            // Updates current time label
-            this.lblCurrentTime.Text = DateTime.Now.ToLongTimeString();
-        }
-
         /// <summary>
         ///   Event for searching tasks based on their description.
         ///   Event is triggered when user types in search field
@@ -412,6 +504,16 @@ namespace Assignment6
             string query = this.textBoxSearch.Text;
 
             this.FilterTasks(query);
+        }
+
+        /// <summary>
+        ///   Event triggered at a interval specified in the timer (1 sec).
+        ///   and updates the current time of day.
+        /// </summary>
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            // Updates current time label
+            this.lblCurrentTime.Text = DateTime.Now.ToLongTimeString();
         }
     }
 }

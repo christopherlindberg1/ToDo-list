@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace Assignment6
 {
+    /// <summary>
+    ///   Class responsible for everything related
+    ///   to managing a TaskManager object
+    /// </summary>
     public class TaskManager
     {
 

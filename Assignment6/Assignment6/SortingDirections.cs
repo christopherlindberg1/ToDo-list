@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 namespace Assignment6
 {
     /// <summary>
-    ///   Enumeration for the available priority levels in the application.
+    ///   Enumeration for the possible sorting directions
+    ///   (these are the only ones available in LINQ).
     /// </summary>
-    public enum PriorityLevels
+    public enum SortingDirections
     {
-        Very_important,
-        Important,
-        Less_important
+        ascending,
+        descending
     }
 }
