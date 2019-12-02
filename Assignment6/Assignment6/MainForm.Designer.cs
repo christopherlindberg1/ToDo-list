@@ -71,7 +71,7 @@
             this.lblPriority.Location = new System.Drawing.Point(655, 38);
             this.lblPriority.Name = "lblPriority";
             this.lblPriority.Size = new System.Drawing.Size(54, 18);
-            this.lblPriority.TabIndex = 1;
+            this.lblPriority.TabIndex = 0;
             this.lblPriority.Text = "Priority";
             // 
             // lblToDo
@@ -80,7 +80,7 @@
             this.lblToDo.Location = new System.Drawing.Point(33, 77);
             this.lblToDo.Name = "lblToDo";
             this.lblToDo.Size = new System.Drawing.Size(47, 18);
-            this.lblToDo.TabIndex = 2;
+            this.lblToDo.TabIndex = 0;
             this.lblToDo.Text = "To do";
             // 
             // lblCurrentTime
@@ -97,7 +97,7 @@
             this.textBoxToDo.Location = new System.Drawing.Point(139, 74);
             this.textBoxToDo.Name = "textBoxToDo";
             this.textBoxToDo.Size = new System.Drawing.Size(712, 24);
-            this.textBoxToDo.TabIndex = 4;
+            this.textBoxToDo.TabIndex = 1;
             // 
             // comboBoxPriority
             // 
@@ -106,14 +106,14 @@
             this.comboBoxPriority.Location = new System.Drawing.Point(715, 35);
             this.comboBoxPriority.Name = "comboBoxPriority";
             this.comboBoxPriority.Size = new System.Drawing.Size(136, 26);
-            this.comboBoxPriority.TabIndex = 5;
+            this.comboBoxPriority.TabIndex = 2;
             // 
             // btnAdd
             // 
             this.btnAdd.Location = new System.Drawing.Point(107, 121);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(120, 30);
-            this.btnAdd.TabIndex = 6;
+            this.btnAdd.TabIndex = 3;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -123,7 +123,7 @@
             this.btnChange.Location = new System.Drawing.Point(260, 120);
             this.btnChange.Name = "btnChange";
             this.btnChange.Size = new System.Drawing.Size(120, 30);
-            this.btnChange.TabIndex = 7;
+            this.btnChange.TabIndex = 4;
             this.btnChange.Text = "Change";
             this.btnChange.UseVisualStyleBackColor = true;
             this.btnChange.Click += new System.EventHandler(this.btnChange_Click);
@@ -133,7 +133,7 @@
             this.btnDelete.Location = new System.Drawing.Point(408, 120);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(120, 30);
-            this.btnDelete.TabIndex = 8;
+            this.btnDelete.TabIndex = 5;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -189,7 +189,7 @@
             this.dateTimePicker1.Location = new System.Drawing.Point(219, 38);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(276, 24);
-            this.dateTimePicker1.TabIndex = 14;
+            this.dateTimePicker1.TabIndex = 0;
             // 
             // btnSaveChanges
             // 
@@ -217,7 +217,7 @@
             this.comboBoxSorting.Location = new System.Drawing.Point(686, 125);
             this.comboBoxSorting.Name = "comboBoxSorting";
             this.comboBoxSorting.Size = new System.Drawing.Size(165, 26);
-            this.comboBoxSorting.TabIndex = 17;
+            this.comboBoxSorting.TabIndex = 6;
             this.comboBoxSorting.SelectedIndexChanged += new System.EventHandler(this.comboBoxSorting_SelectedIndexChanged);
             // 
             // label5
@@ -226,7 +226,7 @@
             this.label5.Location = new System.Drawing.Point(600, 128);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(95, 18);
-            this.label5.TabIndex = 18;
+            this.label5.TabIndex = 0;
             this.label5.Text = "Sort tasks by";
             // 
             // timer1
@@ -256,7 +256,7 @@
             this.textBoxSearch.Location = new System.Drawing.Point(326, 179);
             this.textBoxSearch.Name = "textBoxSearch";
             this.textBoxSearch.Size = new System.Drawing.Size(525, 24);
-            this.textBoxSearch.TabIndex = 20;
+            this.textBoxSearch.TabIndex = 7;
             this.textBoxSearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxSearch_KeyUp);
             // 
             // label6

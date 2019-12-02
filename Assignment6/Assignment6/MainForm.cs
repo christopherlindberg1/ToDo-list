@@ -14,7 +14,7 @@ namespace Assignment6
     {
 
         private readonly TaskManager _taskManager = new TaskManager(SortingOptions.dateTime_ascending);
-        private readonly List<string> _errors = new List<string>();
+        private ErrorHandler _errorHandler = new ErrorHandler();
 
 
         // ===================== Properties ===================== //
@@ -24,11 +24,12 @@ namespace Assignment6
             get { return this._taskManager; }
         }
 
-        private List<string> Errors
+        private ErrorHandler ErrorHandler
         {
-            get { return this._errors; }
+            get { return this._errorHandler; }
         }
 
+        
 
 
 
@@ -122,6 +123,11 @@ namespace Assignment6
             this.timer1.Enabled = true;
         }
 
+        private void ShowErrorMessage(string errorMessage)
+        {
+            MessageBox.Show(errorMessage, "Info");
+        }
+
         private bool ValidateInput()
         {
             bool dateTimeOk = this.ValidateDateTime();
@@ -135,7 +141,7 @@ namespace Assignment6
         {
             if (this.dateTimePicker1.Value <= DateTime.Now.AddMinutes(5))
             {
-                this.AddErrorMessage("The date and time must be set at least 5 minutes into the future");
+                this.ErrorHandler.AddErrorMessage("The date and time must be set at least 5 minutes into the future");
                 return false;
             }
 
@@ -146,7 +152,7 @@ namespace Assignment6
         {
             if (String.IsNullOrWhiteSpace(this.textBoxToDo.Text.Trim()))
             {
-                this.AddErrorMessage("You must provide a description of the task");
+                this.ErrorHandler.AddErrorMessage("You must provide a description of the task");
                 return false;
             }
 
@@ -157,14 +163,14 @@ namespace Assignment6
         {
             if (this.comboBoxPriority.SelectedIndex == -1)
             {
-                this.AddErrorMessage("You must select a priority");
+                this.ErrorHandler.AddErrorMessage("You must select a priority");
                 return false;
             }
 
             if (!Enum.IsDefined(typeof(PriorityLevels),
                 this.comboBoxPriority.SelectedItem.ToString().Replace(" ", "_")))
             {
-                this.AddErrorMessage("You must select a priority in the list");
+                this.ErrorHandler.AddErrorMessage("You must select a priority in the list");
                 return false;
             }
 
@@ -295,44 +301,6 @@ namespace Assignment6
 
 
 
-        
-
-
-
-
-
-        // ============== Methods for error handling ============== //
-
-        private void AddErrorMessage(string error)
-        {
-            if (String.IsNullOrWhiteSpace(error))
-                throw new ArgumentNullException("error", "error list cannot be empty");
-
-            this.Errors.Add(error);
-        }
-
-        private void ShowErrorMessages()
-        {
-            StringBuilder errorMessage = new StringBuilder();
-
-            foreach (string error in this.Errors)
-            {
-                errorMessage.Append("* ");
-                errorMessage.Append(error);
-                errorMessage.Append("\n");
-            }
-
-            MessageBox.Show(errorMessage.ToString(), "Info");
-
-            this.ClearErrorList();
-        }
-
-        private void ClearErrorList()
-        {
-            this.Errors.Clear();
-        }
-
-
 
 
 
@@ -347,7 +315,7 @@ namespace Assignment6
             }
             else
             {
-                this.ShowErrorMessages();
+                this.ShowErrorMessage(this.ErrorHandler.GetErrorMessages());
             }
         }
 
@@ -402,7 +370,7 @@ namespace Assignment6
             }
             else
             {
-                this.ShowErrorMessages();
+                this.ShowErrorMessage(this.ErrorHandler.GetErrorMessages());
             }
         }
 
