@@ -56,6 +56,7 @@
     <Compile Include="PriorityLevelsManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SortingDirections.cs" />
     <Compile Include="SortingOptions.cs" />
     <Compile Include="Task.cs" />
     <Compile Include="TaskManager.cs" />

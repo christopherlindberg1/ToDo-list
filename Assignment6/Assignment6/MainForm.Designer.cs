@@ -84,7 +84,7 @@
             // lblCurrentTime
             // 
             this.lblCurrentTime.AutoSize = true;
-            this.lblCurrentTime.Location = new System.Drawing.Point(787, 560);
+            this.lblCurrentTime.Location = new System.Drawing.Point(787, 599);
             this.lblCurrentTime.Name = "lblCurrentTime";
             this.lblCurrentTime.Size = new System.Drawing.Size(64, 18);
             this.lblCurrentTime.TabIndex = 3;
@@ -140,7 +140,7 @@
             // 
             this.listBoxToDos.FormattingEnabled = true;
             this.listBoxToDos.ItemHeight = 18;
-            this.listBoxToDos.Location = new System.Drawing.Point(36, 191);
+            this.listBoxToDos.Location = new System.Drawing.Point(36, 244);
             this.listBoxToDos.Name = "listBoxToDos";
             this.listBoxToDos.Size = new System.Drawing.Size(815, 256);
             this.listBoxToDos.TabIndex = 9;
@@ -149,7 +149,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(58, 170);
+            this.label1.Location = new System.Drawing.Point(58, 223);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(39, 18);
             this.label1.TabIndex = 10;
@@ -158,7 +158,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(161, 170);
+            this.label2.Location = new System.Drawing.Point(161, 223);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 18);
             this.label2.TabIndex = 11;
@@ -167,7 +167,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(257, 170);
+            this.label3.Location = new System.Drawing.Point(257, 223);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(54, 18);
             this.label3.TabIndex = 12;
@@ -176,7 +176,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(405, 170);
+            this.label4.Location = new System.Drawing.Point(405, 223);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(83, 18);
             this.label4.TabIndex = 13;
@@ -191,7 +191,7 @@
             // 
             // btnSaveChanges
             // 
-            this.btnSaveChanges.Location = new System.Drawing.Point(731, 477);
+            this.btnSaveChanges.Location = new System.Drawing.Point(731, 516);
             this.btnSaveChanges.Name = "btnSaveChanges";
             this.btnSaveChanges.Size = new System.Drawing.Size(120, 30);
             this.btnSaveChanges.TabIndex = 15;
@@ -201,7 +201,7 @@
             // 
             // btnCancelChanges
             // 
-            this.btnCancelChanges.Location = new System.Drawing.Point(572, 477);
+            this.btnCancelChanges.Location = new System.Drawing.Point(572, 516);
             this.btnCancelChanges.Name = "btnCancelChanges";
             this.btnCancelChanges.Size = new System.Drawing.Size(120, 30);
             this.btnCancelChanges.TabIndex = 16;
@@ -212,16 +212,16 @@
             // comboBoxSorting
             // 
             this.comboBoxSorting.FormattingEnabled = true;
-            this.comboBoxSorting.Location = new System.Drawing.Point(731, 125);
+            this.comboBoxSorting.Location = new System.Drawing.Point(686, 125);
             this.comboBoxSorting.Name = "comboBoxSorting";
-            this.comboBoxSorting.Size = new System.Drawing.Size(121, 26);
+            this.comboBoxSorting.Size = new System.Drawing.Size(165, 26);
             this.comboBoxSorting.TabIndex = 17;
             this.comboBoxSorting.SelectedIndexChanged += new System.EventHandler(this.comboBoxSorting_SelectedIndexChanged);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(630, 128);
+            this.label5.Location = new System.Drawing.Point(600, 128);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(95, 18);
             this.label5.TabIndex = 18;
@@ -246,14 +246,14 @@
             // testToolStripMenuItem
             // 
             this.testToolStripMenuItem.Name = "testToolStripMenuItem";
-            this.testToolStripMenuItem.Size = new System.Drawing.Size(47, 24);
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(47, 26);
             this.testToolStripMenuItem.Text = "test";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(900, 606);
+            this.ClientSize = new System.Drawing.Size(900, 653);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.comboBoxSorting);
             this.Controls.Add(this.btnCancelChanges);

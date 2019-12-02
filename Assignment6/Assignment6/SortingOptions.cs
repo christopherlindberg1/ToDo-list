@@ -8,8 +8,11 @@ namespace Assignment6
 {
     public enum SortingOptions
     {
-        description,
-        priority,
-        dateTime
+        description_ascending,
+        description_descending,
+        priority_ascending,
+        priority_descending,
+        dateTime_ascending,
+        dateTime_descending
     }
 }

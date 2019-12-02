@@ -9,14 +9,24 @@ namespace Assignment6
     public class TaskManager
     {
 
-        private readonly List<Task> _tasks = new List<Task>();
+        private List<Task> _tasks = new List<Task>();
+        private SortingOptions _sortingOption;
+        private SortingDirections _sortingDirection;
 
 
         // ===================== Properties ===================== //
         private List<Task> Tasks
         {
             get { return this._tasks; }
+            set { this._tasks = value; }
         }
+
+        public SortingOptions SortingOption
+        {
+            get { return this._sortingOption; }
+            set { this._sortingOption = value; }
+        }
+
 
         public int NumOfTasks
         {
@@ -26,6 +36,13 @@ namespace Assignment6
 
 
         // ======================= Methods ======================= //
+
+
+        public TaskManager(SortingOptions sortingOption)
+        {
+            this.SortingOption = sortingOption;
+        }
+
         public void AddTask(Task task)
         {
             this.Tasks.Add(task);
@@ -51,6 +68,11 @@ namespace Assignment6
                 throw new ArgumentException("Index is out of range", "index");
         }
 
+        public List<Task> GetTasks()
+        {
+            return this.Tasks;
+        }
+
         private bool ValidateIndex(int index)
         {
             if (index < 0)
@@ -61,37 +83,103 @@ namespace Assignment6
             return true;
         }
 
-        public List<Task> GetSortedTaskList(SortingOptions sortingOption)
+        public void SortTasks(SortingOptions sortingOption)
         {
-            // Get tasks-list
-            // Sort by sortingOption
-            // Return list
             if (!Enum.IsDefined(typeof(SortingOptions), sortingOption))
                 throw new ArgumentException("sortingOption must be a SortingOptions", "sortingOption");
 
-            if (sortingOption == SortingOptions.dateTime)
-                return this.SortTasksByDateTime();
-            else if (sortingOption == SortingOptions.description)
-                return this.SortTasksByDescription();
-            else if (sortingOption == SortingOptions.priority)
-                return this.SortTasksByPriority();
+            if (sortingOption == SortingOptions.dateTime_ascending)
+                this.Tasks = this.SortTasksByDateTime(SortingDirections.ascending);
+
+            else if (sortingOption == SortingOptions.dateTime_descending)
+                this.Tasks = this.SortTasksByDateTime(SortingDirections.descending);
+            
+            else if (sortingOption == SortingOptions.description_ascending)
+                this.Tasks = this.SortTasksByDescription(SortingDirections.ascending);
+            
+            else if (sortingOption == SortingOptions.description_descending)
+                this.Tasks = this.SortTasksByDescription(SortingDirections.descending);
+            
+            else if (sortingOption == SortingOptions.priority_ascending)
+                this.Tasks = this.SortTasksByPriority(SortingDirections.ascending);
+            
+            else if (sortingOption == SortingOptions.priority_descending)
+                this.Tasks = this.SortTasksByPriority(SortingDirections.descending);
+
+            // Store the most recent sorting option in memory
+            this.SortingOption = sortingOption;
+        }
+
+        private List<Task> SortTasksByDateTime(SortingDirections direction)
+        {
+            IOrderedEnumerable<Task> sortedTasks;
+
+            if (direction == SortingDirections.ascending)
+            {
+                sortedTasks =
+                    from task in this.Tasks
+                    orderby task.DateTime ascending
+                    select task;
+            }
+            else if (direction == SortingDirections.descending)
+            {
+                sortedTasks =
+                    from task in this.Tasks
+                    orderby task.DateTime descending
+                    select task;
+            }
             else
-                return this.Tasks;
+                throw new ArgumentException("direction was not valid", "direction");
+
+            return sortedTasks.ToList<Task>();
         }
 
-        private List<Task> SortTasksByDateTime()
+        private List<Task> SortTasksByDescription(SortingDirections direction)
         {
-            return this.Tasks;
+            IOrderedEnumerable<Task> sortedTasks;
+
+            if (direction == SortingDirections.ascending)
+            {
+                sortedTasks =
+                    from task in this.Tasks
+                    orderby task.Description ascending
+                    select task;
+            }
+            else if (direction == SortingDirections.descending)
+            {
+                sortedTasks =
+                    from task in this.Tasks
+                    orderby task.Description descending
+                    select task;
+            }
+            else
+                throw new ArgumentException("direction was not valid", "direction");   
+
+            return sortedTasks.ToList<Task>();
         }
 
-        private List<Task> SortTasksByDescription()
+        private List<Task> SortTasksByPriority(SortingDirections direction)
         {
-            return this.Tasks;
-        }
+            IOrderedEnumerable<Task> sortedTasks;
 
-        private List<Task> SortTasksByPriority()
-        {
-            return this.Tasks;
+            if (direction  == SortingDirections.ascending)
+            {
+                sortedTasks =
+                    from task in this.Tasks
+                    orderby task.PriorityLevel descending
+                    select task;
+            }
+            else if (direction == SortingDirections.descending)
+            {
+                sortedTasks =
+                    from task in this.Tasks
+                    orderby task.PriorityLevel ascending
+                    select task;
+            }
+            else
+                throw new ArgumentException("direction was not valid", "direction");
+
+            return sortedTasks.ToList<Task>();
         }
 
 

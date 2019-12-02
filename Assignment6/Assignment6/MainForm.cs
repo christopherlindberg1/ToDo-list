@@ -13,7 +13,7 @@ namespace Assignment6
     public partial class MainForm : Form
     {
 
-        private readonly TaskManager _taskManager = new TaskManager();
+        private readonly TaskManager _taskManager = new TaskManager(SortingOptions.dateTime_ascending);
         private readonly List<string> _errors = new List<string>();
 
 
@@ -264,19 +264,20 @@ namespace Assignment6
             this.listBoxToDos.Items.RemoveAt(index);
         }
 
-        private List<Task> GetSortedTaskList(SortingOptions sortingOption)
+        private void SortTasks(SortingOptions sortingOption)
         {
             if (!Enum.IsDefined(typeof(SortingOptions), sortingOption))
                 throw new ArgumentException("sortingOption must be a SortingOptions", "sortingOption");
             
-            return this.TaskManager.GetSortedTaskList(sortingOption);
+            this.TaskManager.SortTasks(sortingOption);
+            this.UpdateListWithTasks();
         }
 
-        private void UpdateListWithTasks(List<Task> tasks)
+        private void UpdateListWithTasks()
         {
             this.listBoxToDos.Items.Clear();
 
-            foreach (Task task in tasks)
+            foreach (Task task in this.TaskManager.GetTasks())
                 this.listBoxToDos.Items.Add(task.ToString());
         }
 
@@ -330,6 +331,7 @@ namespace Assignment6
             {
                 Task task = this.CreateTaskObject();
                 this.AddTask(task);
+                this.SortTasks(this.TaskManager.SortingOption);
             }
             else
             {
@@ -384,6 +386,7 @@ namespace Assignment6
             {
                 Task task = this.CreateTaskObject();
                 this.UpdateTask(task);
+                this.SortTasks(this.TaskManager.SortingOption);
             }
             else
             {
@@ -400,10 +403,17 @@ namespace Assignment6
             {
                 if (this.comboBoxSorting.SelectedIndex != -1)
                 {
-                    List<Task> tasks = this.GetSortedTaskList(
-                        (SortingOptions) this.comboBoxSorting.SelectedItem);
 
-                    this.UpdateListWithTasks(tasks);
+                    SortingOptions sortingOption;
+                    var result = Enum.TryParse(this.comboBoxSorting.SelectedItem.ToString(),
+                        out sortingOption);
+
+                    if (result)
+                    {
+                        this.SortTasks(sortingOption);
+                        //List<Task> tasks = this.SortTasks(sortingOption);
+                        //this.UpdateListWithTasks(tasks);
+                    }
                 }
             }
         }
