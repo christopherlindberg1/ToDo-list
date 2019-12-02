@@ -51,6 +51,8 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.textBoxSearch = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -246,14 +248,33 @@
             // testToolStripMenuItem
             // 
             this.testToolStripMenuItem.Name = "testToolStripMenuItem";
-            this.testToolStripMenuItem.Size = new System.Drawing.Size(47, 26);
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(47, 24);
             this.testToolStripMenuItem.Text = "test";
+            // 
+            // textBoxSearch
+            // 
+            this.textBoxSearch.Location = new System.Drawing.Point(326, 179);
+            this.textBoxSearch.Name = "textBoxSearch";
+            this.textBoxSearch.Size = new System.Drawing.Size(525, 24);
+            this.textBoxSearch.TabIndex = 20;
+            this.textBoxSearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxSearch_KeyUp);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(33, 182);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(305, 18);
+            this.label6.TabIndex = 21;
+            this.label6.Text = "Search task by description (pattern matching)";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(900, 653);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.textBoxSearch);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.comboBoxSorting);
             this.Controls.Add(this.btnCancelChanges);
@@ -309,6 +330,8 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
+        private System.Windows.Forms.TextBox textBoxSearch;
+        private System.Windows.Forms.Label label6;
     }
 }
 

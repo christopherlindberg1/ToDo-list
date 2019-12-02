@@ -10,6 +10,7 @@ namespace Assignment6
     {
 
         private List<Task> _tasks = new List<Task>();
+        //private List<Task> _temporaryTaskList = new List<Task>();
         private SortingOptions _sortingOption;
         private SortingDirections _sortingDirection;
 
@@ -20,6 +21,12 @@ namespace Assignment6
             get { return this._tasks; }
             set { this._tasks = value; }
         }
+
+        /*private List<Task> TemporaryTaskList
+        {
+            get { return this._temporaryTaskList; }
+            set { this._temporaryTaskList = value; }
+        }*/
 
         public SortingOptions SortingOption
         {
@@ -182,7 +189,31 @@ namespace Assignment6
             return sortedTasks.ToList<Task>();
         }
 
+        /// <summary>
+        ///   Returns a list with those tasks whose description contains
+        ///   the search query passed into the method.
+        ///   It loops through the Tasks list and returns a temporary list
+        ///   with the tasks that match
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        public List<Task> FilterTasks(string query)
+        {
+            if (String.IsNullOrWhiteSpace(query))
+                return this.Tasks;
 
+            // this.TemporaryTaskList.Clear();
+            List<Task> filteredTasks = new List<Task>();
 
+            foreach (Task task in this.Tasks)
+            {
+                if (task.Description.Contains(query))
+                {
+                    filteredTasks.Add(task);
+                }
+            }
+
+            return filteredTasks;
+        }
     }
 }

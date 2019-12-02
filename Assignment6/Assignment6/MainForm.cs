@@ -270,14 +270,26 @@ namespace Assignment6
                 throw new ArgumentException("sortingOption must be a SortingOptions", "sortingOption");
             
             this.TaskManager.SortTasks(sortingOption);
-            this.UpdateListWithTasks();
+            this.UpdateListWithTasks(this.TaskManager.GetTasks());
         }
 
-        private void UpdateListWithTasks()
+        private void FilterTasks(string query)
         {
             this.listBoxToDos.Items.Clear();
 
-            foreach (Task task in this.TaskManager.GetTasks())
+            List<Task> filteredTasks = this.TaskManager.FilterTasks(query);
+
+            foreach (Task task in filteredTasks)
+            {
+                this.listBoxToDos.Items.Add(task.ToString());
+            }
+        }
+
+        private void UpdateListWithTasks(List<Task> tasks)
+        {
+            this.listBoxToDos.Items.Clear();
+
+            foreach (Task task in tasks)
                 this.listBoxToDos.Items.Add(task.ToString());
         }
 
@@ -411,8 +423,6 @@ namespace Assignment6
                     if (result)
                     {
                         this.SortTasks(sortingOption);
-                        //List<Task> tasks = this.SortTasks(sortingOption);
-                        //this.UpdateListWithTasks(tasks);
                     }
                 }
             }
@@ -422,6 +432,18 @@ namespace Assignment6
         {
             // Updates current time label
             this.lblCurrentTime.Text = DateTime.Now.ToLongTimeString();
+        }
+
+        /// <summary>
+        ///   Event for searching tasks based on their description.
+        ///   Event is triggered when user types in search field
+        ///   and lets key up.
+        /// </summary>
+        private void textBoxSearch_KeyUp(object sender, KeyEventArgs e)
+        {
+            string query = this.textBoxSearch.Text;
+
+            this.FilterTasks(query);
         }
     }
 }
