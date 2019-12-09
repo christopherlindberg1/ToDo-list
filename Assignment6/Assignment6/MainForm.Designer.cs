@@ -50,10 +50,13 @@
             this.label5 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuSubitemNew = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.ToolStripMenusubitemExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -239,19 +242,48 @@
             this.menuStrip1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.testToolStripMenuItem,
-            this.helpToolStripMenuItem});
+            this.ToolStripMenuItemFile,
+            this.ToolStripMenuItemHelp});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(900, 28);
             this.menuStrip1.TabIndex = 19;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // testToolStripMenuItem
+            // ToolStripMenuItemFile
             // 
-            this.testToolStripMenuItem.Name = "testToolStripMenuItem";
-            this.testToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
-            this.testToolStripMenuItem.Text = "File";
+            this.ToolStripMenuItemFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuSubitemNew,
+            this.toolStripSeparator1,
+            this.ToolStripMenusubitemExit});
+            this.ToolStripMenuItemFile.Name = "ToolStripMenuItemFile";
+            this.ToolStripMenuItemFile.Size = new System.Drawing.Size(46, 24);
+            this.ToolStripMenuItemFile.Text = "File";
+            // 
+            // ToolStripMenuSubitemNew
+            // 
+            this.ToolStripMenuSubitemNew.Name = "ToolStripMenuSubitemNew";
+            this.ToolStripMenuSubitemNew.Size = new System.Drawing.Size(224, 26);
+            this.ToolStripMenuSubitemNew.Text = "New";
+            this.ToolStripMenuSubitemNew.Click += new System.EventHandler(this.ToolStripMenuSubitemNew_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(221, 6);
+            // 
+            // ToolStripMenusubitemExit
+            // 
+            this.ToolStripMenusubitemExit.Name = "ToolStripMenusubitemExit";
+            this.ToolStripMenusubitemExit.Size = new System.Drawing.Size(224, 26);
+            this.ToolStripMenusubitemExit.Text = "Exit";
+            this.ToolStripMenusubitemExit.Click += new System.EventHandler(this.ToolStripMenusubitemExit_Click);
+            // 
+            // ToolStripMenuItemHelp
+            // 
+            this.ToolStripMenuItemHelp.Name = "ToolStripMenuItemHelp";
+            this.ToolStripMenuItemHelp.Size = new System.Drawing.Size(55, 24);
+            this.ToolStripMenuItemHelp.Text = "Help";
             // 
             // textBoxSearch
             // 
@@ -269,12 +301,6 @@
             this.label6.Size = new System.Drawing.Size(305, 18);
             this.label6.TabIndex = 21;
             this.label6.Text = "Search task by description (pattern matching)";
-            // 
-            // helpToolStripMenuItem
-            // 
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
-            this.helpToolStripMenuItem.Text = "Help";
             // 
             // MainForm
             // 
@@ -337,10 +363,13 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemFile;
         private System.Windows.Forms.TextBox textBoxSearch;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemHelp;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuSubitemNew;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenusubitemExit;
     }
 }
 

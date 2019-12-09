@@ -45,6 +45,7 @@ namespace Assignment6
 
         private void InitializeGUI()
         {
+            this.listBoxToDos.Items.Clear();
             this.comboBoxPriority.Items.Clear();
             this.comboBoxPriority.DropDownStyle = ComboBoxStyle.DropDownList;
             this.comboBoxPriority.Items.AddRange(PriorityLevelsManager.ParsePriorityLevels());
@@ -93,6 +94,8 @@ namespace Assignment6
             this.btnDelete.Enabled = false;
             this.btnSaveChanges.Enabled = false;
             this.btnCancelChanges.Enabled = false;
+            this.comboBoxPriority.SelectedIndex = 0;
+            this.comboBoxSorting.SelectedIndex = 0;
 
             this.listBoxToDos.SelectedIndex = -1;
         }
@@ -127,7 +130,11 @@ namespace Assignment6
         /// </summary>
         private void InitializeMenu()
         {
-            
+            // Configuring the "new" item
+            this.ToolStripMenuSubitemNew.ShortcutKeys = Keys.Control | Keys.N;
+
+            // Configuring the "exit" item
+            this.ToolStripMenusubitemExit.ShortcutKeys = Keys.Alt | Keys.F4;
         }
 
         /// <summary>
@@ -435,7 +442,7 @@ namespace Assignment6
 
             if (selectedIndex != -1)
             {
-                var cancel = MessageBox.Show("Are you sure you want to delete this task?",
+                DialogResult cancel = MessageBox.Show("Are you sure you want to delete this task?",
                                              "Confirm",
                                              MessageBoxButtons.YesNo);
 
@@ -513,6 +520,38 @@ namespace Assignment6
         {
             // Updates current time label
             this.lblCurrentTime.Text = DateTime.Now.ToLongTimeString();
+        }
+
+
+
+
+
+        // ====================================
+        //      Events for ToolStripMenu
+        // ====================================
+
+
+        /// <summary>
+        ///   Resetting everything in the form. Deleting todos and reseting controls
+        /// </summary>
+        private void ToolStripMenuSubitemNew_Click(object sender, EventArgs e)
+        {
+            this.InitializeGUI();
+        }
+
+        /// <summary>
+        ///   Closes the form
+        /// </summary>
+        private void ToolStripMenusubitemExit_Click(object sender, EventArgs e)
+        {
+            DialogResult cancel = MessageBox.Show("Sure to exit program?",
+                                         "Confirm",
+                                         MessageBoxButtons.OKCancel);
+
+            if (cancel == DialogResult.OK)
+            {
+                this.Close();
+            }
         }
     }
 }
