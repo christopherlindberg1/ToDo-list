@@ -14,9 +14,7 @@ namespace Assignment6
     {
 
         private List<Task> _tasks = new List<Task>();
-        //private List<Task> _temporaryTaskList = new List<Task>();
         private SortingOptions _sortingOption;
-        private SortingDirections _sortingDirection;
 
 
         // ===================== Properties ===================== //
@@ -26,18 +24,11 @@ namespace Assignment6
             set { this._tasks = value; }
         }
 
-        /*private List<Task> TemporaryTaskList
-        {
-            get { return this._temporaryTaskList; }
-            set { this._temporaryTaskList = value; }
-        }*/
-
         public SortingOptions SortingOption
         {
             get { return this._sortingOption; }
             set { this._sortingOption = value; }
         }
-
 
         public int NumOfTasks
         {
@@ -199,8 +190,8 @@ namespace Assignment6
         ///   It loops through the Tasks list and returns a temporary list
         ///   with the tasks that match
         /// </summary>
-        /// <param name="query"></param>
-        /// <returns></returns>
+        /// <param name="query">string for pattern matching of to do titles</param>
+        /// <returns>List with todos that match the query</returns>
         public List<Task> FilterTasks(string query)
         {
             if (String.IsNullOrWhiteSpace(query))
@@ -211,7 +202,7 @@ namespace Assignment6
 
             foreach (Task task in this.Tasks)
             {
-                if (task.Description.Contains(query))
+                if (task.Description.ToLower().Contains(query.ToLower()))
                 {
                     filteredTasks.Add(task);
                 }

@@ -13,7 +13,7 @@ namespace Assignment6
     public partial class MainForm : Form
     {
 
-        private readonly TaskManager _taskManager = new TaskManager(SortingOptions.dateTime_ascending);
+        private readonly TaskManager _taskManager = new TaskManager(SortingOptions.description_ascending);
         private ErrorHandler _errorHandler = new ErrorHandler();
 
 
@@ -258,6 +258,7 @@ namespace Assignment6
         {
             this.TaskManager.AddTask(task);
             this.AddTaskToGUI(task);
+            this.SortTasks(this.TaskManager.SortingOption);
             this.SetFormToDefaultState();
         }
 
@@ -287,6 +288,7 @@ namespace Assignment6
 
             this.TaskManager.UpdateTask(selectedIndex, newTask);
             this.UpdateTaskInGUI(selectedIndex, newTask);
+            this.SortTasks(this.TaskManager.SortingOption);
             this.SetFormToDefaultState();
         }
 
@@ -392,7 +394,6 @@ namespace Assignment6
             {
                 Task task = this.CreateTaskObject();
                 this.AddTask(task);
-                this.SortTasks(this.TaskManager.SortingOption);
             }
             else
             {
@@ -464,7 +465,6 @@ namespace Assignment6
             {
                 Task task = this.CreateTaskObject();
                 this.UpdateTask(task);
-                this.SortTasks(this.TaskManager.SortingOption);
             }
             else
             {
@@ -481,7 +481,6 @@ namespace Assignment6
             {
                 if (this.comboBoxSorting.SelectedIndex != -1)
                 {
-
                     SortingOptions sortingOption;
                     var result = Enum.TryParse(this.comboBoxSorting.SelectedItem.ToString(),
                         out sortingOption);
