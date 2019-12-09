@@ -126,7 +126,7 @@ namespace Assignment6
         }
 
         /// <summary>
-        ///   Initializes the resource menu at the top of the GUI.
+        ///   Configures the ToolStripMenu.
         /// </summary>
         private void InitializeMenu()
         {
@@ -134,7 +134,7 @@ namespace Assignment6
             this.ToolStripMenuSubitemNew.ShortcutKeys = Keys.Control | Keys.N;
 
             // Configuring the "exit" item
-            this.ToolStripMenusubitemExit.ShortcutKeys = Keys.Alt | Keys.F4;
+            this.ToolStripMenuSubitemExit.ShortcutKeys = Keys.Alt | Keys.F4;
         }
 
         /// <summary>
@@ -385,6 +385,16 @@ namespace Assignment6
                 this.listBoxToDos.Items.Add(task.ToString());
         }
 
+        private bool VerifyAppExit()
+        {
+            DialogResult exit = MessageBox.Show("Sure to exit program?",
+                                                "Confirm",
+                                                MessageBoxButtons.OKCancel,
+                                                MessageBoxIcon.Warning);
+
+            return (exit == DialogResult.OK) ? true : false;
+        }
+
 
 
 
@@ -544,13 +554,25 @@ namespace Assignment6
         /// </summary>
         private void ToolStripMenusubitemExit_Click(object sender, EventArgs e)
         {
-            DialogResult cancel = MessageBox.Show("Sure to exit program?",
-                                         "Confirm",
-                                         MessageBoxButtons.OKCancel);
-
-            if (cancel == DialogResult.OK)
+            if (this.VerifyAppExit())
             {
                 this.Close();
+            }
+        }
+
+        /// <summary>
+        ///   Opens info about the app when clicking on "about"
+        /// </summary>
+        private void ToolStripMenuSubitemAbout_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if ( ! this.VerifyAppExit())
+            {
+                e.Cancel = true;
             }
         }
     }

@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Assignment6")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Todo application where users can add / edit / delete tasks, and also search and order them.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("HP Inc.")]
 [assembly: AssemblyProduct("Assignment6")]

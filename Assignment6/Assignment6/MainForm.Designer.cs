@@ -53,10 +53,11 @@
             this.ToolStripMenuItemFile = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuSubitemNew = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.ToolStripMenusubitemExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuSubitemExit = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.ToolStripMenuSubitemAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -255,7 +256,7 @@
             this.ToolStripMenuItemFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStripMenuSubitemNew,
             this.toolStripSeparator1,
-            this.ToolStripMenusubitemExit});
+            this.ToolStripMenuSubitemExit});
             this.ToolStripMenuItemFile.Name = "ToolStripMenuItemFile";
             this.ToolStripMenuItemFile.Size = new System.Drawing.Size(46, 24);
             this.ToolStripMenuItemFile.Text = "File";
@@ -272,15 +273,17 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(221, 6);
             // 
-            // ToolStripMenusubitemExit
+            // ToolStripMenuSubitemExit
             // 
-            this.ToolStripMenusubitemExit.Name = "ToolStripMenusubitemExit";
-            this.ToolStripMenusubitemExit.Size = new System.Drawing.Size(224, 26);
-            this.ToolStripMenusubitemExit.Text = "Exit";
-            this.ToolStripMenusubitemExit.Click += new System.EventHandler(this.ToolStripMenusubitemExit_Click);
+            this.ToolStripMenuSubitemExit.Name = "ToolStripMenuSubitemExit";
+            this.ToolStripMenuSubitemExit.Size = new System.Drawing.Size(224, 26);
+            this.ToolStripMenuSubitemExit.Text = "Exit";
+            this.ToolStripMenuSubitemExit.Click += new System.EventHandler(this.ToolStripMenusubitemExit_Click);
             // 
             // ToolStripMenuItemHelp
             // 
+            this.ToolStripMenuItemHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuSubitemAbout});
             this.ToolStripMenuItemHelp.Name = "ToolStripMenuItemHelp";
             this.ToolStripMenuItemHelp.Size = new System.Drawing.Size(55, 24);
             this.ToolStripMenuItemHelp.Text = "Help";
@@ -301,6 +304,13 @@
             this.label6.Size = new System.Drawing.Size(305, 18);
             this.label6.TabIndex = 21;
             this.label6.Text = "Search task by description (pattern matching)";
+            // 
+            // ToolStripMenuSubitemAbout
+            // 
+            this.ToolStripMenuSubitemAbout.Name = "ToolStripMenuSubitemAbout";
+            this.ToolStripMenuSubitemAbout.Size = new System.Drawing.Size(224, 26);
+            this.ToolStripMenuSubitemAbout.Text = "About";
+            this.ToolStripMenuSubitemAbout.Click += new System.EventHandler(this.ToolStripMenuSubitemAbout_Click);
             // 
             // MainForm
             // 
@@ -333,6 +343,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.Text = "To Do Reminder";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -369,7 +380,8 @@
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemHelp;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuSubitemNew;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem ToolStripMenusubitemExit;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuSubitemExit;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuSubitemAbout;
     }
 }
 
