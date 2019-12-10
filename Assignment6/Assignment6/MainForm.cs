@@ -62,6 +62,8 @@ namespace Assignment6
             this.SetToolTips();
 
             this.SetFormToDefaultState();
+
+            MessageBox.Show(Application.StartupPath);
         }
 
         /// <summary>
