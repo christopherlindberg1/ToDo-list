@@ -534,6 +534,18 @@ namespace Assignment6
             this.lblCurrentTime.Text = DateTime.Now.ToLongTimeString();
         }
 
+        /// <summary>
+        ///   Closing of form. User has to verify that they want 
+        ///   to close the form.
+        /// </summary>
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!this.VerifyAppExit())
+            {
+                e.Cancel = true;
+            }
+        }
+
 
 
 
@@ -543,7 +555,7 @@ namespace Assignment6
         // ====================================
 
 
-        /// <summary>
+        /// <summary>s
         ///   Resetting everything in the form. Deleting todos and reseting controls
         /// </summary>
         private void ToolStripMenuSubitemNew_Click(object sender, EventArgs e)
@@ -556,10 +568,7 @@ namespace Assignment6
         /// </summary>
         private void ToolStripMenusubitemExit_Click(object sender, EventArgs e)
         {
-            if (this.VerifyAppExit())
-            {
-                this.Close();
-            }
+            this.Close();   
         }
 
         /// <summary>
@@ -568,14 +577,6 @@ namespace Assignment6
         private void ToolStripMenuSubitemAbout_Click(object sender, EventArgs e)
         {
             
-        }
-
-        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if ( ! this.VerifyAppExit())
-            {
-                e.Cancel = true;
-            }
         }
     }
 }
