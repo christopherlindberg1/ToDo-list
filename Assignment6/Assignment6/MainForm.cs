@@ -10,6 +10,10 @@ using System.Windows.Forms;
 
 namespace Assignment6
 {
+    /// <summary>
+    ///   Starting class for the application.
+    ///   Handles all interaction with the user.
+    /// </summary>
     public partial class MainForm : Form
     {
 
@@ -43,6 +47,10 @@ namespace Assignment6
             this.InitializeTimer();
         }
 
+        /// <summary>
+        ///   Initializes the application to the beginning state.
+        ///   This includes GUI, data storage and settings.
+        /// </summary>
         private void InitializeApp()
         {
             this.TaskManager.ClearTasks();
@@ -294,7 +302,6 @@ namespace Assignment6
         /// <summary>
         ///   Updates a task by replacing it with a new Task object.
         /// </summary>
-        /// <param name="task"></param>
         private void UpdateTask(Task task)
         {
             int selectedIndex = this.listBoxToDos.SelectedIndex;
@@ -565,7 +572,6 @@ namespace Assignment6
         // ====================================
         //      Events for ToolStripMenu
         // ====================================
-
 
         /// <summary>s
         ///   Resetting everything in the form. Deleting todos and reseting controls

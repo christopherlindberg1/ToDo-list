@@ -6,6 +6,10 @@ using System.Windows.Forms;
 
 namespace Assignment6
 {
+    /// <summary>
+    ///   Starting class for the application. 
+    ///   Creates new MainForm.
+    /// </summary>
     static class Program
     {
         /// <summary>

@@ -12,7 +12,6 @@ namespace Assignment6
     /// </summary>
     public class Task
     {
-        
         private string _description;
         private PriorityLevels _priorityLevel;
         private DateTime _dateTime;

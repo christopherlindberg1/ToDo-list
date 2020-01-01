@@ -12,7 +12,6 @@ namespace Assignment6
     /// </summary>
     public class ErrorHandler
     {
-
         private readonly List<string> _errors = new List<string>();
         private bool _haveShownErrors = true;
 

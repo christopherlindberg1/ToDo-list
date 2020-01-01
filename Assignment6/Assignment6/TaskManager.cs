@@ -12,7 +12,6 @@ namespace Assignment6
     /// </summary>
     public class TaskManager
     {
-
         private List<Task> _tasks = new List<Task>();
         private SortingOptions _sortingOption;
 
@@ -80,6 +79,10 @@ namespace Assignment6
             this.Tasks.Clear();
         }
 
+        /// <summary>
+        ///   Checks that a given index is within the range of
+        ///   the indexes for the tasks stored.
+        /// </summary>
         private bool ValidateIndex(int index)
         {
             if (index < 0)
