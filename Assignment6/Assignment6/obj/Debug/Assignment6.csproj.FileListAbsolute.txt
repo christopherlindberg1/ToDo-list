@@ -7,3 +7,4 @@ C:\Users\Christopher\OneDrive\Skola\årskurs-3\termin-5\C#\Mod6\assignment\assig
 C:\Users\Christopher\OneDrive\Skola\årskurs-3\termin-5\C#\Mod6\assignment\assignment6\ToDo-list\Assignment6\Assignment6\obj\Debug\Assignment6.csproj.GenerateResource.cache
 C:\Users\Christopher\OneDrive\Skola\årskurs-3\termin-5\C#\Mod6\assignment\assignment6\ToDo-list\Assignment6\Assignment6\obj\Debug\Assignment6.exe
 C:\Users\Christopher\OneDrive\Skola\årskurs-3\termin-5\C#\Mod6\assignment\assignment6\ToDo-list\Assignment6\Assignment6\obj\Debug\Assignment6.pdb
+C:\Users\Christopher\OneDrive\Skola\årskurs-3\termin-5\C#\Mod6\assignment\assignment6\ToDo-list\Assignment6\Assignment6\obj\Debug\Assignment6.AboutBox.resources

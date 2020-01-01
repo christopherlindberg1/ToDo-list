@@ -65,11 +65,17 @@ namespace Assignment6
             this.listBoxToDos.HorizontalScrollbar = true;
             this.lblCurrentTime.Text = DateTime.Now.ToLongTimeString();
 
+            this.SetIcon();
             this.SetToolTips();
-
             this.SetFormToDefaultState();
+        }
 
-            // MessageBox.Show(Application.StartupPath);
+        /// <summary>
+        ///   Sets the application icon
+        /// </summary>
+        private void SetIcon()
+        {
+
         }
 
         /// <summary>
@@ -582,7 +588,8 @@ namespace Assignment6
         /// </summary>
         private void ToolStripMenuSubitemAbout_Click(object sender, EventArgs e)
         {
-            
+            var box = new AboutBox();
+            box.Show();
         }
     }
 }
