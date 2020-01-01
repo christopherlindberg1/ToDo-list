@@ -43,6 +43,12 @@ namespace Assignment6
             this.InitializeTimer();
         }
 
+        private void InitializeApp()
+        {
+            this.TaskManager.ClearTasks();
+            this.InitializeGUI();
+        }
+
         private void InitializeGUI()
         {
             this.listBoxToDos.Items.Clear();
@@ -63,7 +69,7 @@ namespace Assignment6
 
             this.SetFormToDefaultState();
 
-            MessageBox.Show(Application.StartupPath);
+            // MessageBox.Show(Application.StartupPath);
         }
 
         /// <summary>
@@ -560,7 +566,7 @@ namespace Assignment6
         /// </summary>
         private void ToolStripMenuSubitemNew_Click(object sender, EventArgs e)
         {
-            this.InitializeGUI();
+            this.InitializeApp();
         }
 
         /// <summary>

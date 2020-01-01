@@ -75,6 +75,11 @@ namespace Assignment6
             return this.Tasks;
         }
 
+        public void ClearTasks()
+        {
+            this.Tasks.Clear();
+        }
+
         private bool ValidateIndex(int index)
         {
             if (index < 0)
